@@ -357,7 +357,7 @@ class ExecuteEverythingOnCallerBehalfTarget
     public function run()
     {
         $this->firstFunction();
-        $this->secondFunction();
+//        $this->secondFunction();
     }
 }
 

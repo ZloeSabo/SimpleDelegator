@@ -5,8 +5,9 @@ namespace ZloeSabo\SimpleDelegator;
 use Psr\Log\LoggerAwareTrait;
 
 /**
- * TODO Won't return static properties of caller as of php 5.6
- * TODO Won't switch to caller context if called via call_user_func*
+ * @todo Won't return static properties of caller as of php 5.6
+ * @todo Won't switch to caller context if called via call_user_func*
+ * @todo class constants
  * @author Evgeny Soynov<saboteur@saboteur.me>
  */
 trait SimpleDelegator
@@ -49,6 +50,11 @@ trait SimpleDelegator
         }
 
         return $this->delegatee;
+    }
+
+    public function setDelegate(DelegateeInterface $delegatee)
+    {
+        $this->delegatee = $delegatee;
     }
 
     /**
