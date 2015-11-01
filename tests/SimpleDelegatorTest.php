@@ -6,9 +6,6 @@ use ZloeSabo\SimpleDelegator\DelegateeInterface;
 use ZloeSabo\SimpleDelegator\SimpleDelegator;
 
 /**
- * @TODO always check calls from inside and outside
- * @TODO always check calls from static and instance methods
- * @TODO do we need to test cases when property exists on delegator?
  * @author Evgeny Soynov<saboteur@saboteur.me>
  */
 class SimpleDelegatorTest extends \PHPUnit_Framework_TestCase
@@ -210,7 +207,11 @@ class SimpleDelegatorTest extends \PHPUnit_Framework_TestCase
             ->getMock()
         ;
 
-        $this->subject->expects($this->once())->method('getCaller')->willReturn($this->delegatee);
+        $caller = $this->getMockBuilder('\stdClass')->setMethods(['firstFunction', 'secondFunction'])->getMock();
+        $caller->expects($this->at(0))->method('firstFunction');
+        $caller->expects($this->at(1))->method('secondFunction');
+
+        $this->subject->expects($this->once())->method('getCaller')->willReturn($caller);
 
         $this->subject->run(); //Delegatee should be created after first function call
     }
@@ -357,7 +358,7 @@ class ExecuteEverythingOnCallerBehalfTarget
     public function run()
     {
         $this->firstFunction();
-//        $this->secondFunction();
+        $this->secondFunction();
     }
 }
 
