@@ -18,5 +18,7 @@
         "psr-4": {
             "ZloeSabo\\SimpleDelegator\\": "src"
         }
-    }
+    },
+    "type": "library",
+    "license": "MIT"
 }
