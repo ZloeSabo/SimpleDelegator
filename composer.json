@@ -1,5 +1,6 @@
 {
     "name": "zloesabo/simple-delegator",
+    "description": "PHP port of Ruby's SimpleDelegator. Use this to refactor your classes",
     "require-dev": {
         "phpunit/phpunit": "5.0.*"
     },
